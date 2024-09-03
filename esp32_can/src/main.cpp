@@ -1,17 +1,16 @@
-#include <Arduino.h>
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 #include <CAN.h>
 
-const int BAUD_RATE = 9600;
-const int CAN_SPEED = 500E3;
-
 void setup() {
-  Serial.begin(BAUD_RATE);
+  Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("CAN SETUP");
+  Serial.println("CAN Sender");
 
   // start the CAN bus at 500 kbps
-  if (!CAN.begin(CAN_SPEED)) {
+  if (!CAN.begin(500E3)) {
     Serial.println("Starting CAN failed!");
     while (1);
   }
